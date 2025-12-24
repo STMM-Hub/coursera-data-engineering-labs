@@ -31,3 +31,35 @@ The DAG `ETL_toll_data` is scheduled to run **daily** and consists of the follow
 
 ### 3️⃣ Consolidate Data
 - Merges extracted data from all sources into a single file:
+
+### 4️⃣ Transform Data
+- Converts the `vehicle_type` field to **uppercase**
+- Saves the final output to the staging directory:
+
+
+---
+
+## ⚙️ Technologies Used
+- **Apache Airflow**
+- **BashOperator**
+- Linux shell utilities (`tar`, `cut`, `paste`, `tr`)
+- Python (DAG definition and scheduling)
+
+---
+
+## ⏱ DAG Configuration
+- **DAG ID:** `ETL_toll_data`
+- **Schedule:** Daily
+- **Retry Policy:** 1 retry with 5-minute delay
+- **Failure Notifications:** Email alerts enabled
+
+---
+
+## ▶️ How to Run (Local / Lab Environment)
+1. Place the DAG file inside your Airflow `dags/` directory
+2. Ensure required input files exist in the expected paths
+3. Start Airflow services:
+ ```bash
+ airflow scheduler
+ airflow webserver
+
